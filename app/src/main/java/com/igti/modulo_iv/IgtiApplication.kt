@@ -16,26 +16,6 @@ class IgtiApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val okHttpClient = OkHttpClient.Builder()
-            .connectTimeout(15L, TimeUnit.SECONDS)
-            .readTimeout(15L, TimeUnit.SECONDS)
-            .writeTimeout(15L, TimeUnit.SECONDS)
-            .addInterceptor(HttpLoggingInterceptor { msg ->
-                println("LOG APP: $msg")
-            }.apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }).addNetworkInterceptor(HttpLoggingInterceptor { msg ->
-                println("LOG NTW: $msg")
-            }.apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            })
-            .build()
-
-        retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .baseUrl("https://igti.com.br")
-            .build()
     }
 
 }

@@ -3,10 +3,7 @@ package com.igti.modulo_iv.data.remote
 import com.igti.modulo_iv.data.remote.dto.AlunoRequestDTO
 import com.igti.modulo_iv.data.remote.dto.AlunoResponseDTO
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 
 interface IAlunoRepository {
@@ -22,6 +19,7 @@ interface IAlunoRepository {
 
     @PUT("/alunos/{id}")
     fun alterarAluno(@Body aluno: AlunoRequestDTO): Call<List<AlunoResponseDTO>>
-    
-    fun excluirAluno()
+
+    @DELETE("/alunos/{id}")
+    fun excluirAluno(): Call<okhttp3.Response>
 }

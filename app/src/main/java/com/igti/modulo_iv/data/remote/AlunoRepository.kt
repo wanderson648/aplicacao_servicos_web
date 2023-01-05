@@ -4,13 +4,15 @@ import com.igti.modulo_iv.data.remote.dto.AlunoRequestDTO
 import com.igti.modulo_iv.data.remote.dto.AlunoResponseDTO
 import okhttp3.Response
 import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.Path
 
 class AlunoRepository: IAlunoRepository {
     override fun listarAlunos(): Call<List<AlunoResponseDTO>> {
         TODO("Not yet implemented")
     }
 
-    override fun listarAlunoPorId(): Call<List<AlunoResponseDTO>> {
+    override fun listarAlunoPorId(@Path(value = "id") id: String): Call<List<AlunoResponseDTO>> {
         TODO("Not yet implemented")
     }
 
@@ -18,13 +20,15 @@ class AlunoRepository: IAlunoRepository {
         TODO("Not yet implemented")
     }
 
-    override fun alterarAluno(aluno: AlunoRequestDTO): Call<List<AlunoResponseDTO>> {
+    override fun alterarAluno(
+        @Path(value = "id") id: String,
+        @Body aluno: AlunoRequestDTO
+    ): Call<List<AlunoResponseDTO>> {
         TODO("Not yet implemented")
     }
 
-    override fun excluirAluno(): Call<Response> {
+    override fun excluirAluno(@Path(value = "id") id: String): Call<Response> {
         TODO("Not yet implemented")
     }
-
 
 }

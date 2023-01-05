@@ -12,14 +12,14 @@ interface IAlunoRepository {
     fun listarAlunos(): Call<List<AlunoResponseDTO>>
 
     @GET("/alunos/{id}")
-    fun listarAlunoPorId(): Call<List<AlunoResponseDTO>>
+    fun listarAlunoPorId(@Path("id") id: String): Call<List<AlunoResponseDTO>>
 
     @POST("/alunos")
     fun cadastrarAluno(@Body aluno: AlunoRequestDTO): Call<List<AlunoResponseDTO>>
 
     @PUT("/alunos/{id}")
-    fun alterarAluno(@Body aluno: AlunoRequestDTO): Call<List<AlunoResponseDTO>>
+    fun alterarAluno(@Path("id") id: String, @Body aluno: AlunoRequestDTO): Call<List<AlunoResponseDTO>>
 
     @DELETE("/alunos/{id}")
-    fun excluirAluno(): Call<okhttp3.Response>
+    fun excluirAluno(@Path("id") id: String): Call<okhttp3.Response>
 }

@@ -1,5 +1,10 @@
 package com.igti.modulo_iv.data.remote
 
+import retrofit2.Call
+import retrofit2.http.GET
+
 interface IAlunoRepository {
-    fun getAlunos() : List<String>
+
+    @GET
+    fun getAlunos() : Call<List<String>>
 }
